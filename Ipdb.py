@@ -1,4 +1,4 @@
-# -*- coding: cp936 -*-
+# -*- coding: gbk -*-
 from Util import Util
 from BinarySearch import BinarySearch
 
@@ -53,7 +53,6 @@ class Ipdb(BinarySearch):
         self.checkIndex(index)
         addr = self.dbAddr + index * self.dLen
         ip = Util.byte2int(self.db[addr: addr + self.ipLen], False)
-        print('ip_addr: %d ip: %d' % (addr, ip))
         return ip
     
     def checkIndex(self, index):
@@ -68,12 +67,11 @@ class Ipdb(BinarySearch):
         print('ip_addr: %d ip: %d lAddr:%d' % (addr, ip, lAddr))
         if self.type == 4:
             lAddr += 4
-        loc = self.readLoc(lAddr, True if self.type == 6 else False)
+        loc = self.readLoc(lAddr, True)
         if self.type == 4:
-            loc = loc.decode('gbk')
+            loc = loc.decode('cp936').encode('gbk')
         if self.type == 6:
             loc = loc.decode('utf-8').encode('gbk')
-        print(repr(loc))
         return loc
 
     def readRawText(self, start):
@@ -89,7 +87,6 @@ class Ipdb(BinarySearch):
         db = self.db
         jType = Util.byte2int(db[start], False)
         print('start1: %d \t%d %d' % ( start, isTwoPart, jType))
-        print(jType == 1)
         if jType == 1 or jType == 2:
             start += 1
             offAddr = Util.byte2int(db[start:start+self.osLen], False)
@@ -102,9 +99,7 @@ class Ipdb(BinarySearch):
         else :
             loc = self.readRawText(start)
             nAddr = start + len(loc) + 1
-        print(jType == 1)
-        print('start2: %d %d %d' % (start, nAddr, jType == True))
-        if isTwoPart == True:
+        if isTwoPart == True and jType != 1:
             print('read part 2')
             loc += ' ' + self.readLoc(nAddr)
         return loc
