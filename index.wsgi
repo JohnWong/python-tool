@@ -42,9 +42,8 @@ def app(environ, start_response):
                 ma = ptn_pos.match(sub)
                 if ma != None:
                     pos = ma.group(1)
-            print(ip, type, pos)
         type = type if type != None else 'xml'
-        pos = pos if pos != None else 0
+        pos = 1 if pos != None and pos == '1' else 0
         print(ip, type, pos)
         ret = ipQuery.searchIp(ip, pos)
         fmt = json_geo if type == 'json' else xml_geo

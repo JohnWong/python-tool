@@ -18,7 +18,7 @@ class IpBupt:
         ret = self._yet
         if loc1 == 0 and loc2 == 7:
             ret = self._bupt + self._nb
-        if loc1 < 0 and loc2 == 8:
+        if loc1 < 0 and loc2 == 7:
             ret = self._bupt + self._wl
         if loc1 >= 0 and loc1 < len(self._type) and loc2 >= 0 and loc2 < len(self._num):
             ret = self._bupt + self._type[loc1]+self._num[loc2]
