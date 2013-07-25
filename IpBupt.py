@@ -1,4 +1,4 @@
-# -*- coding: cp936 -*-
+# -*- coding: gbk -*-
 class IpBupt:
     
     _bupt = '北京邮电大学 '

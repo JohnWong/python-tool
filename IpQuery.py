@@ -1,4 +1,4 @@
-# -*- coding: cp936 -*-
+# -*- coding: gbk -*-
 import re
 from Ipdb import Ipdb
 from IpBupt import IpBupt
@@ -24,15 +24,17 @@ class IpQuery:
             if v6 >= 0:
                 ret += self.v6db.searchIp(v6)
             if v4 >= 0:
+                if ret != '':
+                    ret += ' > '
                 bupt = self.ipBupt.searchIp(v4) if pos == 1 else None
                 if bupt != None:
-                    ret += bupt
+                    ret +=  bupt
                 else:
-                    ret += self.v4db.searchIp(v4)
+                    ret +=  self.v4db.searchIp(v4)
         except Exception as e:
             print(e) 
         if ret == '':
-            ret = 'Error Format' 
+            ret = '∏Ò Ω¥ÌŒÛ' 
         return ret
 
     def parseIpv4(self, ip):
@@ -77,7 +79,8 @@ class IpQuery:
     
 def main():
     ipQuery = IpQuery()
-    ip = '2001:da8:200:900e:0:5efe:182.117.109.0'
+    #ip = '2001:da8:200:900e:0:5efe:182.117.109.0'
+    ip = '42.156.139.1'
     #ip = '182.117.109.0'
     result = ipQuery.searchIp(ip, 1)
     print(result)
