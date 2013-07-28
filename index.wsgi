@@ -11,7 +11,7 @@ xml_geo = """<?xml version="1.0" encoding="gbk"?>
 <loc>{1}</loc>
 </geo>
 """
-json_geo = """{{geo:{{ip:"{0}", loc:"{1}"}}}}"""
+json_geo = """{{"geo":{{"ip":"{0}", "loc":"{1}"}}}}"""
 
 ptn_ip = re.compile(r'^ip=([0-9a-f\:\.]{3,51})$')
 ptn_pos = re.compile(r'^pos=([0-1]){0,1}$')
