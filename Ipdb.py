@@ -101,7 +101,9 @@ class Ipdb(BinarySearch):
             nAddr = start + len(loc) + 1
         if isTwoPart == True and jType != 1:
             print('read part 2')
-            loc += ' ' + self.readLoc(nAddr)
+            partTwo = self.readLoc(nAddr)
+            if loc != '' and partTwo != '':
+                loc += ' ' + partTwo
         return loc
 
     def searchIp(self, val):
