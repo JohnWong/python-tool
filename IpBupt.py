@@ -19,7 +19,7 @@ class IpBupt:
         ret = self._yet
         if loc1 == 0 and loc2 == 7: #新科研楼
             ret = self._bupt + self._nb
-        if loc1 == 0 and loc2 == 4: #主楼
+        elif loc1 == 0 and loc2 == 4: #主楼
             ret = self._bupt + self._mb
         elif loc1 < 0 and loc2 == 7: #无线
             ret = self._bupt + self._wl
