@@ -17,7 +17,7 @@ class IpBupt:
         loc1 = a2 / 100 - 1
         loc2 = a2 % 100 - 1
         ret = self._yet
-        if loc1 == 0 and loc2 == 7: #新科研楼
+        if loc1 == 0 and (loc2 == 7 or loc2 == 8): #新科研楼
             ret = self._bupt + self._nb
         elif loc1 == 0 and loc2 == 4: #主楼
             ret = self._bupt + self._mb

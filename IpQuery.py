@@ -17,10 +17,10 @@ class IpQuery:
         self.ipBupt = IpBupt()
     
     def searchIp(self, ip, pos):
+        ret = ''
         try:
             v4, v6 = self.parseIp(ip)
             print('v4: %d v6: %d' % (v4, v6))
-            ret = ''
             if v6 >= 0:
                 ret += self.v6db.searchIp(v6)
             if v4 >= 0:
@@ -82,7 +82,7 @@ def main():
     #ip = '2001:da8:200:900e:0:5efe:182.117.109.0'
     #ip = '42.156.139.1'
     #ip = '182.117.109.0'
-    ip = '10.105.1.1'
+    ip = '10.109.1.1'
     result = ipQuery.searchIp(ip, 1)
     print(result)
     
