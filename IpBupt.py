@@ -8,6 +8,7 @@ class IpBupt:
     _nb = '新科研楼'
     _buptinno = '创新大本营 学十楼北地下室'
     _mb = '主楼'
+    _mgl = '明光楼'
     _yet = '尚未收录'
 
     def searchIp(self, val):
@@ -22,6 +23,8 @@ class IpBupt:
             ret = self._bupt + self._nb
         elif loc1 == 0 and loc2 == 4: #主楼
             ret = self._bupt + self._mb
+        elif loc1 == 0 and loc2 == 6: #明光楼
+            ret = self._bupt + self._mgl
         elif loc1 == 0 and loc2 == 9: #创新大本营
             ret = self._bupt + self._buptinno
         elif loc1 < 0 and loc2 == 7: #无线
