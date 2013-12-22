@@ -6,6 +6,7 @@ class IpBupt:
     _num = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二', '十三', '十四', '二十九']
     _wl = '无线网'
     _nb = '新科研楼'
+    _buptinno = '创新大本营 学十楼北地下室'
     _mb = '主楼'
     _yet = '尚未收录'
 
@@ -21,6 +22,8 @@ class IpBupt:
             ret = self._bupt + self._nb
         elif loc1 == 0 and loc2 == 4: #主楼
             ret = self._bupt + self._mb
+        elif loc1 == 0 and loc2 == 9: #创新大本营
+            ret = self._bupt + self._buptinno
         elif loc1 < 0 and loc2 == 7: #无线
             ret = self._bupt + self._wl
         elif loc1 >= 0 and loc1 < len(self._type) and loc2 >= 0 and loc2 < len(self._num):

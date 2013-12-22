@@ -82,7 +82,7 @@ def main():
     #ip = '2001:da8:200:900e:0:5efe:182.117.109.0'
     #ip = '42.156.139.1'
     #ip = '182.117.109.0'
-    ip = '10.109.1.1'
+    ip = '114.242.248.*'
     result = ipQuery.searchIp(ip, 1)
     print(result)
     
