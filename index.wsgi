@@ -4,7 +4,7 @@ import re
 import sys
 from IpQuery import IpQuery
 
-usage = "使用方法:/gep?ip={ip}<br>如果解析北邮内网地址则添加&pos=1<br>默认返回xml，需要json则添加&type=json<br>默认编码gbk，需要utf8编码则添加&encoding=utf-8"
+usage = "使用方法:/geo?ip={ip}<br>如果解析北邮内网地址则添加&pos=1<br>默认返回xml，需要json则添加&type=json<br>默认编码gbk，需要utf8编码则添加&encoding=utf-8"
 xml_geo = """<?xml version="1.0" encoding="{encoding}"?>
 <geo>
 <ip>{0}</ip>
