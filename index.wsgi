@@ -54,7 +54,8 @@ def app(environ, start_response):
         ret = ipQuery.searchIp(ip, pos)
         fmt = json_geo if type == 'json' else xml_geo
         fmt = fmt.replace('{encoding}', encoding)
-        response_headers = [('Content-type', 'text/html; charset=' + encoding)]
+        contentType = 'application/json' if type == 'json' else 'text/xml' 
+        response_headers = [('Content-type', contentType + '; charset=' + encoding)]
         start_response(status, response_headers)
         if encoding == 'utf-8':
             return fmt.format(ip, ret).decode('gbk').encode(encoding)
