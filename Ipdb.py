@@ -12,7 +12,7 @@ class Ipdb(BinarySearch):
         f.close()
         self.db = db
         header = db[0:4]
-        print('header: %s' % header)
+        #print('header: %s' % header)
         if header != 'IPDB'.encode():
             self.type = 4
             self.initV4Db()
@@ -23,28 +23,28 @@ class Ipdb(BinarySearch):
     def initV4Db(self):
         db = self.db
         self.dbAddr = Util.byte2int(db[0:4], False)
-        print('dbaddr: %s' % self.dbAddr)
+        #print('dbaddr: %s' % self.dbAddr)
         endAddr = Util.byte2int(db[4:8], False)
-        print('endAddr: %s' % endAddr)
+        #print('endAddr: %s' % endAddr)
         self.osLen = 3
-        print('offset: %s' % self.osLen)
+        #print('offset: %s' % self.osLen)
         self.ipLen = 4
-        print('iplen: %s' % self.ipLen)
+        #print('iplen: %s' % self.ipLen)
         self.dLen = self.osLen + self.ipLen
         self.size = (endAddr - self.dbAddr) / self.dLen
-        print('total: %s' % self.size)
+        #print('total: %s' % self.size)
         
     def initV6Db(self):
         db = self.db
         self.osLen = Util.byte2int(db[6])
-        print('offset: %s' % self.osLen)
+        #print('offset: %s' % self.osLen)
         self.ipLen = Util.byte2int(db[7])
         self.dLen = self.osLen + self.ipLen
-        print('iplen: %s' % self.ipLen)
+        #print('iplen: %s' % self.ipLen)
         self.size = Util.byte2int(db[8:0x10], False)
-        print('total: %s' % self.size)
+        #print('total: %s' % self.size)
         self.dbAddr = Util.byte2int(db[0x10: 0x18], False)
-        print('dbaddr: %s' % self.dbAddr)
+        #print('dbaddr: %s' % self.dbAddr)
     
     def getSize(self):
         return self.size
@@ -64,7 +64,7 @@ class Ipdb(BinarySearch):
         addr = self.dbAddr + index * self.dLen
         ip = Util.byte2int(self.db[addr: addr + self.ipLen], False)
         lAddr = Util.byte2int(self.db[addr + self.ipLen : addr + self.dLen], False)
-        print('ip_addr: %d ip: %d lAddr:%d' % (addr, ip, lAddr))
+        #print('ip_addr: %d ip: %d lAddr:%d' % (addr, ip, lAddr))
         if self.type == 4:
             lAddr += 4
         loc = self.readLoc(lAddr, True)
@@ -86,21 +86,21 @@ class Ipdb(BinarySearch):
     def readLoc(self, start, isTwoPart = False):
         db = self.db
         jType = Util.byte2int(db[start], False)
-        print('start1: %d \t%d %d' % ( start, isTwoPart, jType))
+        #print('start1: %d \t%d %d' % ( start, isTwoPart, jType))
         if jType == 1 or jType == 2:
             start += 1
             offAddr = Util.byte2int(db[start:start+self.osLen], False)
-            print("off: %d" % offAddr)
+            #print("off: %d" % offAddr)
             if offAddr == 0:
                 return 'Î´ÖªµØÖ·'
-            print(jType == 1)
+            #print(jType == 1)
             loc = self.readLoc(offAddr, True if jType == 1 else False)
             nAddr = start + self.osLen
         else :
             loc = self.readRawText(start)
             nAddr = start + len(loc) + 1
         if isTwoPart == True and jType != 1:
-            print('read part 2')
+            #print('read part 2')
             partTwo = self.readLoc(nAddr)
             if loc != '' and partTwo != '':
                 loc += ' ' + partTwo

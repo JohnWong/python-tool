@@ -1,2 +1,10 @@
 name: geoip
 version: 1
+worker: wsgi
+libraries:
+- name: urllib2
+  version: "1.1.7"
+handlers:
+- url: /images
+  static_path: images
+...
