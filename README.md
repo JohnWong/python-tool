@@ -26,4 +26,5 @@ Weibo Follow Button
 Usage
 ---
 http://pytool.sinaapp.com/wb-btn?user={uid}&count={true|false}&size={small|large}&encoding={utf-8|gbk}
-<iframe class="github-btn" style="overflow: hidden;border: 0;" scrolling="no" src="/wb-btn?user=2180280355&count=true&size=small&encoding=utf-8" width="180" height="20" title="Follow on Weibo"></iframe>
+
+demo: <a href="http://pytool.sinaapp.com">http://pytool.sinaapp.com</a>
