@@ -28,4 +28,4 @@ Usage
 http://pytool.sinaapp.com/wb-btn?user={uid}&count={true|false}&size={small|large}&encoding={utf-8|gbk}
 http://pytool.sinaapp.com/in-btn?user={pub_profile}&count={true|false}&size={small|large}&encoding={utf-8|gbk}
 
-demo: <a href="http://pytool.sinaapp.com">http://pytool.sinaapp.com</a>
+Demo: <a href="http://pytool.sinaapp.com">http://pytool.sinaapp.com</a>
