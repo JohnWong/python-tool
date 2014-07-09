@@ -14,7 +14,8 @@ usage = """<h1>IP转地址</h1>
 根据微博ID生成一个类似Github的按钮<br>
 使用方法：/wb-btn?user={uid}&count={true|false}&size={small|large}&encoding={utf-8|gbk}<br>
 例如http://pytool.sinaapp.com/wb-btn?user=2180280355&count=true&size=small&encoding=utf-8<br>
-<iframe class="github-btn" style="overflow: hidden;border: 0;" scrolling="no" src="/wb-btn?user=2180280355&count=true&size=small&encoding=utf-8" width="180" height="20" title="Follow on Weibo"></iframe>"""
+<iframe style="overflow: hidden;border: 0;" scrolling="no" src="/wb-btn?user=2180280355&count=true&size=small&encoding=utf-8" width="180" height="20" title="Follow on Weibo"></iframe>
+<iframe style="overflow: hidden;border: 0;" scrolling="no" src="/in-btn?user=xiaozhe-huang/4b/204/71b&count=true&size=small&encoding=utf-8" width="220" height="20" title="Connect on Linkedin"></iframe>"""
 
 xml_geo = """<?xml version="1.0" encoding="{encoding}"?>
 <geo>
@@ -84,6 +85,37 @@ def app(environ, start_response):
             screen_name = obj['screen_name'].encode('utf-8')
             followers_count = obj['followers_count']
             with open('weibo-btn.tp', 'r') as file:
+                content = file.read()
+
+            encode_match = ptn_wbencode.findall(param)
+            encoding = encode_match[0][0] if len(encode_match) > 0 else 'gbk'
+            response_headers = [('Content-type', 'text/html; charset=' + encoding)]
+            start_response(status, response_headers)
+            content = content.replace('${screen_name}', screen_name).replace('${followers_count}', str(followers_count)).replace('${profile_url}', profile_url)
+            if encoding == 'utf-8':
+                return content
+            return content.decode('utf-8').encode(encoding)
+        
+    elif path == "/in-btn":
+        match = ptn_user.findall(param)
+        if len(match) > 0:
+            uid = match[0][0]
+
+            #fetch linkedin pub
+            profile_url = 'https://www.linkedin.com/pub/' + uid
+            request = urllib2.Request(profile_url)
+            response = urllib2.urlopen(request)
+            result = response.read()
+
+            given_match = re.findall("""<span class="given-name">(.*?)</span>""", result)
+            given_name = given_match[0] if len(given_match) > 0 else ""
+            family_match = re.findall("""<span class="family-name">(.*?)</span>""", result)
+            family_name = family_match[0] if len(family_match) > 0 else ""
+            screen_name =  given_name + ' ' + family_name
+            conn_match = re.findall("""<strong>(\d*?)</strong> connections""", result)
+            followers_count = conn_match[0] if len(conn_match) > 0 else ""
+            
+            with open('linkedin-btn.tp', 'r') as file:
                 content = file.read()
 
             encode_match = ptn_wbencode.findall(param)

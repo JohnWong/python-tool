@@ -1,4 +1,4 @@
-Including Two Tools: Geo IP & Weibo Follow Button
+Including Two Tools: Geo IP & Social Follow Button
 
 Geo IP
 =====
@@ -18,13 +18,14 @@ Usage
 使用方法:/geo?ip={ip}&type={json|xml}&encoding={gbk|utf-8}
 如果解析北邮内网地址则添加&pos=1
 
-Weibo Follow Button
+Social Follow Button
 ======
 
-根据微博ID生成一个类似Github的按钮
+生成类似<a href="http://ghbtns.com/">ghbtns</a>的关注按钮。包括根据微博ID生成微博按钮，根据Linkedin公开资料生成Linkedin按钮。
 
 Usage
 ---
 http://pytool.sinaapp.com/wb-btn?user={uid}&count={true|false}&size={small|large}&encoding={utf-8|gbk}
+http://pytool.sinaapp.com/in-btn?user={pub_profile}&count={true|false}&size={small|large}&encoding={utf-8|gbk}
 
 demo: <a href="http://pytool.sinaapp.com">http://pytool.sinaapp.com</a>
