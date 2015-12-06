@@ -66,7 +66,7 @@ def app(environ, start_response):
         fmt = json_geo if type == 'json' else xml_geo
         fmt = fmt.replace('{encoding}', encoding)
         contentType = 'application/json' if type == 'json' else 'text/xml' 
-        response_headers = [('Content-type', contentType + '; charset=' + encoding)]
+        response_headers = [('Content-type', contentType + '; charset=' + encoding), ('Access-Control-Allow-Origin', '*')]
         start_response(status, response_headers)
         if encoding == 'utf-8':
             return fmt.format(ip, ret).decode('gbk').encode(encoding)
@@ -77,7 +77,7 @@ def app(environ, start_response):
             uid = match[0][0]
 
             #fetch sina api
-            request = urllib2.Request('https://api.weibo.com/2/users/show.json?access_token=2.00LWOY4C0T6q4d8f245fc021LxfjyC&uid=' + uid)
+            request = urllib2.Request('https://api.weibo.com/2/users/show.json?source=581960115&uid=' + uid)
             response = urllib2.urlopen(request)
             result = response.read()
             obj = json.loads(result)

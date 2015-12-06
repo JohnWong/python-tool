@@ -1,8 +1,4 @@
-/BinarySearch.pyc
-/IpBupt.pyc
-/IpQuery.pyc
-/Ipdb.pyc
-/Util.pyc
-/index.wsgic
-/start.bat
+*.pyc
+*.wsgic
 *.dump
+.svn
