@@ -70,6 +70,7 @@ class Ipdb(BinarySearch):
         loc = self.readLoc(lAddr, True)
         if self.type == 4:
             loc = loc.decode('cp936').encode('gbk')
+            loc = loc.replace('CZ88.NET', '')
         if self.type == 6:
             loc = loc.decode('utf-8').encode('gbk')
         return loc
