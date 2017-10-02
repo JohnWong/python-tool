@@ -9,7 +9,7 @@ from IpQuery import IpQuery
 usage = """<h1>IP转地址</h1>
 根据IP地址查询所在的地理位置<br>
 使用方法:/geo?ip={ip}&type={json|xml}&encoding={gbk|utf-8}<br>
-如果解析北邮内网地址则添加&pos=1<br>
+如果解析北邮内网地址则添加&pos=1<br>"""
 
 """
 <h1>微博按钮</h1>
@@ -18,7 +18,6 @@ usage = """<h1>IP转地址</h1>
 例如http://pytool.sinaapp.com/wb-btn?user=2180280355&count=true&size=small&encoding=utf-8<br>
 <iframe style="overflow: hidden;border: 0;" scrolling="no" src="/wb-btn?user=2180280355&count=true&size=small&encoding=utf-8" width="180" height="20" title="Follow on Weibo"></iframe>
 <iframe style="overflow: hidden;border: 0;" scrolling="no" src="/in-btn?user=xiaozhe-huang/4b/204/71b&count=true&size=small&encoding=utf-8" width="220" height="20" title="Connect on Linkedin"></iframe>"""
-"""
 
 xml_geo = """<?xml version="1.0" encoding="{encoding}"?>
 <geo>
