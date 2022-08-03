@@ -31,11 +31,14 @@ class IpBupt:
             ret = self._bupt + self._wl
         elif loc1 >= 0 and loc1 < len(self._type) and loc2 >= 0 and loc2 < len(self._num):
             ret = self._bupt + self._type[loc1]+self._num[loc2]
+        elif a2 == 28:
+            ret = self._bupt + self._type[1] + self._num[9]
         return ret
 
 def main():
     ipBupt = IpBupt()
     ip = (((((10 << 8) + 210) << 8) + 8)<< 8)
+    ip = (((((10 << 8) + 28) << 8) + 188)<< 8)
     #ip = 174522882
     print(ipBupt.searchIp(ip))
 
