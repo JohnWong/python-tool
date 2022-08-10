@@ -1,5 +1,3 @@
-Including Two Tools: Geo IP & Social Follow Button
-
 Geo IP
 =====
 
